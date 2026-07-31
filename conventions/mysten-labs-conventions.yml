@@ -1,0 +1,59 @@
+generated: '2026-07-20'
+method: derived
+source: grpc/sui/rpc/v2/, openrpc/mysten-labs-sui-jsonrpc-openrpc.json, https://docs.sui.io/references/sui-api
+description: >-
+  Cross-cutting request/response semantics for the Sui full-node APIs (JSON-RPC,
+  GraphQL RPC, gRPC), derived from the published specs and docs.
+authentication:
+  style: none-at-transport
+  detail: >-
+    Public endpoints are unauthenticated; write operations are authorized by
+    client-side transaction signatures (Ed25519/Secp256k1/Secp256r1/multisig/zkLogin).
+  cross_ref: authentication/mysten-labs-authentication.yml
+pagination:
+  style: cursor
+  grpc:
+    request_params: [page_size, page_token]
+    response_fields: [next_page_token]
+    default_page_size: 50
+    max_page_size: 1000
+  json_rpc:
+    request_params: [cursor, limit]
+    response_fields: [nextCursor, hasNextPage, data]
+  note: Cursor/opaque-token pagination on List* / query* / getOwnedObjects style calls.
+field_selection:
+  style: field-mask
+  detail: >-
+    gRPC read methods accept a google.protobuf.FieldMask (read_mask) to select
+    which fields of Object/Transaction/Checkpoint/Event to return (sparse
+    fieldsets). JSON-RPC uses per-call `options` objects (showType, showContent,
+    showOwner, showEffects, etc.).
+idempotency:
+  supported: false
+  header: none
+  detail: >-
+    There is no Idempotency-Key header. Transaction execution is naturally
+    idempotent by transaction digest — submitting the same signed transaction
+    more than once yields the same effects and does not double-execute — but this
+    is a ledger property, not an HTTP idempotency contract.
+versioning:
+  scheme: per-network-semver + proto package path (sui.rpc.v2)
+  cross_ref: lifecycle/mysten-labs-lifecycle.yml
+error_envelope:
+  grpc: google.rpc.Status (code, message, details)
+  json_rpc: json-rpc-2.0 error object (code, message, data)
+  cross_ref: errors/mysten-labs-error-codes.yml
+streaming:
+  detail: >-
+    Real-time data via gRPC SubscriptionService (server-streaming
+    SubscribeCheckpoints/Transactions/Events) and JSON-RPC WebSocket
+    subscriptions (suix_subscribeEvent, suix_subscribeTransaction).
+  cross_ref: asyncapi/mysten-labs-subscriptions.yml
+rate_limiting:
+  detail: >-
+    Rate limits are enforced by the specific RPC provider hosting the full node,
+    not defined in the Mysten node software; no standard rate-limit headers are
+    documented.
+notes: >-
+  Serialization uses BCS (Binary Canonical Serialization) for on-the-wire object
+  and transaction bytes; JSON responses follow the SuiJSON coercion rules.

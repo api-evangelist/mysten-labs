@@ -1,0 +1,47 @@
+generated: '2026-07-20'
+method: searched
+source: https://docs.sui.io/guides/developer/getting-started/get-coins
+summary: >-
+  Sui provides staged non-production networks — Testnet, Devnet, and a
+  developer-run Localnet — that mirror the Mainnet RPC surface at
+  network-specific hosts, plus a public faucet that dispenses free test SUI so
+  developers can deploy and exercise Move packages, objects, and transactions
+  without real funds. There are no live/test API keys (full-node RPC is open);
+  the "sandbox" separation is the network you point at.
+networks:
+- name: Mainnet
+  purpose: production
+  jsonrpc: https://fullnode.mainnet.sui.io:443
+  graphql: https://graphql.mainnet.sui.io/graphql
+  faucet: null
+- name: Testnet
+  purpose: staging network for developers to test code before production
+  jsonrpc: https://fullnode.testnet.sui.io:443
+  graphql: https://graphql.testnet.sui.io/graphql
+  faucet: https://faucet.testnet.sui.io/v2/gas
+- name: Devnet
+  purpose: unstable network for early testing of upcoming/in-development features
+  jsonrpc: https://fullnode.devnet.sui.io:443
+  faucet: https://faucet.devnet.sui.io/v2/gas
+- name: Localnet
+  purpose: local developer network run via the sui CLI (sui start / RPC 9000)
+  jsonrpc: http://127.0.0.1:9000
+  faucet: http://127.0.0.1:9123/gas
+faucet:
+  web: https://faucet.sui.io/
+  endpoint_pattern: https://faucet.${NETWORK}.sui.io/v2/gas
+  methods:
+  - web UI (Request SUI button)
+  - Discord (#devnet-faucet / #testnet-faucet channels)
+  - cURL POST to the /v2/gas endpoint
+  - Sui TypeScript SDK (requestSuiFromFaucetV2)
+  rate_limited: true
+  notes: >-
+    Dispenses free test SUI on Devnet/Testnet/Localnet only; requests are rate
+    limited. Never usable on Mainnet.
+test_mode_signal:
+  mechanism: network-scoped host selection (no test/live API key prefixes)
+  key_auth: none (public full-node RPC is open, no API key)
+docs:
+- https://docs.sui.io/guides/developer/getting-started/get-coins
+- https://docs.sui.io/guides/developer/getting-started/connect

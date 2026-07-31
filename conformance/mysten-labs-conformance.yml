@@ -1,0 +1,35 @@
+generated: '2026-07-20'
+method: derived
+source: openrpc/mysten-labs-sui-jsonrpc-openrpc.json, grpc/sui/rpc/v2/
+standards:
+- id: openrpc-1.2
+  conforms: true
+  evidence: JSON-RPC surface published as an OpenRPC 1.2.6 document (56 methods).
+- id: json-rpc-2.0
+  conforms: true
+  evidence: Full-node RPC implements JSON-RPC 2.0 over HTTP/WebSocket.
+- id: grpc
+  conforms: true
+  evidence: gRPC services defined in sui.rpc.v2 (LedgerService, StateService, TransactionExecutionService, MovePackageService, SignatureVerificationService, SubscriptionService).
+- id: protobuf3
+  conforms: true
+  evidence: Proto3 interface definitions published in github.com/MystenLabs/sui-apis.
+- id: graphql
+  conforms: true
+  evidence: GraphQL RPC endpoints at graphql.mainnet.sui.io / graphql.testnet.sui.io.
+- id: rfc9727-api-catalog
+  conforms: true
+  evidence: /.well-known/api-catalog served on docs.sui.io (linkset advertising service-desc specs).
+- id: buf-schema-registry
+  conforms: true
+  evidence: buf.yaml present in sui-apis for buf-based proto tooling.
+- id: oauth2
+  conforms: false
+  evidence: Public RPC endpoints are unauthenticated; no OAuth2 at the API layer (zkLogin is a transaction-signing scheme, not API auth).
+- id: rfc9457-problem-details
+  conforms: false
+  evidence: Errors use JSON-RPC error objects / gRPC status (google.rpc.Status), not application/problem+json.
+notes: >-
+  Derived from the published machine-readable specs. No formal compliance
+  certifications (SOC 2 / ISO 27001) are published by Mysten Labs, so no
+  Compliance pointer is emitted.

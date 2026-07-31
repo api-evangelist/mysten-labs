@@ -1,0 +1,34 @@
+generated: '2026-07-20'
+method: searched
+source: https://github.com/MystenLabs/sui/releases
+scheme: per-network-semver
+description: >-
+  Sui protocol releases are published as GitHub releases with per-network semver
+  tags. Each release rolls out first to devnet, then testnet, then mainnet.
+current:
+  mainnet: mainnet-v1.75.2
+  testnet: testnet-v1.75.2
+  devnet: devnet-v1.76.0
+entries:
+- version: devnet-v1.76.0
+  date: '2026-07-20'
+  network: devnet
+- version: testnet-v1.75.2
+  date: '2026-07-14'
+  network: testnet
+- version: mainnet-v1.75.2
+  date: '2026-07-15'
+  network: mainnet
+- version: testnet-v1.75.1
+  date: '2026-07-07'
+  network: testnet
+- version: devnet-v1.75.0
+  date: '2026-07-06'
+  network: devnet
+- version: testnet-v1.74.1
+  date: '2026-06-30'
+  network: testnet
+notes: >-
+  Recent-window snapshot of the MystenLabs/sui GitHub releases feed (the live
+  source of truth). Full protocol changelogs and breaking-change notes accompany
+  each tagged release.

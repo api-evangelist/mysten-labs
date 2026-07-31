@@ -1,0 +1,52 @@
+generated: '2026-07-20'
+method: searched
+source: https://sdk.mystenlabs.com/dapp-kit
+summary: >-
+  The Sui dApp Kit is Mysten Labs' first-party set of React UI components, hooks,
+  and providers for building Sui dApps — pre-built, drop-in wallet-connection and
+  account-management components built on Radix UI, plus lower-level hooks for
+  custom UIs. Distinct from the server/client SDKs in packages/: this is the
+  browser/embeddable component surface. All installed wallets are auto-detected.
+loaders:
+- name: '@mysten/dapp-kit'
+  registry: npm
+  url: https://www.npmjs.com/package/@mysten/dapp-kit
+  install: npm install @mysten/dapp-kit @mysten/sui @tanstack/react-query
+  official: true
+  docs: https://sdk.mystenlabs.com/dapp-kit
+- name: '@mysten/wallet-kit'
+  registry: npm
+  url: https://www.npmjs.com/package/@mysten/wallet-kit
+  official: true
+  status: legacy
+families:
+- family: Providers
+  built_on: React context
+  components:
+  - name: SuiClientProvider
+    description: Provides a SuiClient and network configuration to the app.
+  - name: WalletProvider
+    description: Manages wallet connection state for all descendant components.
+  loader: '@mysten/dapp-kit'
+- family: Wallet UI
+  built_on: Radix UI
+  components:
+  - name: ConnectButton
+    description: Drop-in button that opens a modal prompting the user to connect a wallet.
+  - name: ConnectModal
+    description: The wallet-selection / connection modal, controllable standalone.
+  loader: '@mysten/dapp-kit'
+- family: Hooks
+  description: Lower-level React hooks for wallet state and RPC queries.
+  components:
+  - name: useCurrentAccount
+  - name: useCurrentWallet
+  - name: useSignAndExecuteTransaction
+  - name: useSuiClientQuery
+  - name: useConnectWallet
+  - name: useDisconnectWallet
+  loader: '@mysten/dapp-kit'
+docs:
+- https://sdk.mystenlabs.com/dapp-kit
+- https://sdk.mystenlabs.com/dapp-kit/getting-started/react
+- https://blog.sui.io/react-apps-dapp-kit/

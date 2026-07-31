@@ -1,0 +1,24 @@
+generated: '2026-07-20'
+method: searched
+host: https://docs.sui.io
+documents:
+- path: /.well-known/api-catalog
+  status: 200
+  file: mysten-labs-api-catalog.json
+  note: >-
+    RFC 9727 API Catalog (linkset) advertising the Sui JSON-RPC OpenRPC specs
+    (mainnet/testnet/devnet) and GraphQL endpoints.
+- path: /.well-known/security.txt
+  status: 404
+- path: /.well-known/openid-configuration
+  status: 404
+- path: /.well-known/ai-plugin.json
+  status: 404
+probed_hosts:
+- https://docs.sui.io
+- https://sui.io
+- https://mystenlabs.com
+notes: >-
+  security.txt is not published on docs.sui.io, sui.io, or mystenlabs.com
+  (all 404). The api-catalog is the one discovery document present and points at
+  the machine-readable OpenRPC specifications.

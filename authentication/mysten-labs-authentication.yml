@@ -1,0 +1,36 @@
+generated: '2026-07-20'
+method: searched
+source: https://docs.sui.io/references/sui-api
+summary:
+  types: [none]
+  api_key_in: []
+  oauth2_flows: []
+  note: >-
+    Public Sui full-node RPC endpoints (JSON-RPC, GraphQL RPC, gRPC) are open and
+    require no API key or bearer token — anyone can read chain state and submit
+    signed transactions against public endpoints such as
+    fullnode.mainnet.sui.io:443 and graphql.mainnet.sui.io/graphql. Authorization
+    is performed cryptographically at the transaction layer, not at the API layer.
+schemes:
+- name: none
+  type: none
+  description: >-
+    No transport-level authentication on public full-node endpoints. Rate limits
+    and access controls are applied by the specific RPC provider hosting the node.
+  sources: [openrpc/mysten-labs-sui-jsonrpc-openrpc.json]
+transaction_layer_auth:
+  description: >-
+    Requests that mutate state (executeTransactionBlock) carry a client-side
+    cryptographic signature over the transaction bytes. Sui supports Ed25519,
+    ECDSA Secp256k1, ECDSA Secp256r1, multisig, and zkLogin signature schemes.
+  schemes: [Ed25519, Secp256k1, Secp256r1, multisig, zkLogin]
+  zklogin:
+    description: OAuth/OIDC-based (Google, Facebook, Twitch, Apple, etc.) zero-knowledge login that derives a Sui address from a JWT without exposing identity on-chain.
+    docs: https://docs.sui.io/concepts/cryptography/zklogin
+    sdk: "@mysten/enoki"
+  proto: grpc/sui/rpc/v2/signature_verification_service.proto
+notes: >-
+  Managed RPC providers (e.g. via the RPC providers list) may layer their own API
+  keys on top of the public endpoints, but the Mysten-published node software
+  exposes unauthenticated read/execute RPC. This is not derivable from the OpenRPC
+  spec (no securitySchemes concept in OpenRPC); documented from the Sui docs.

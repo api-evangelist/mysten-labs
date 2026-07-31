@@ -1,0 +1,37 @@
+generated: '2026-07-20'
+method: derived
+source: grpc/sui/rpc/v2/error_reason.proto, grpc/sui/rpc/v2/execution_status.proto, openrpc/mysten-labs-sui-jsonrpc-openrpc.json
+description: >-
+  Sui exposes two error surfaces. (1) The gRPC API returns google.rpc.Status
+  (code + message + details) with a sui.rpc.v2.ErrorReason enum and
+  google.rpc.error_details. (2) The JSON-RPC API returns standard JSON-RPC 2.0
+  error objects (code + message + data). Transaction execution failures are
+  reported in the ExecutionStatus of a transaction's effects rather than as an
+  API transport error.
+envelopes:
+  grpc:
+    type: google.rpc.Status
+    fields: [code, message, details]
+    reason_enum: sui.rpc.v2.ErrorReason
+  json_rpc:
+    type: json-rpc-2.0-error
+    fields: [code, message, data]
+error_reasons:
+- reason: ERROR_REASON_UNKNOWN
+  value: 0
+- reason: FIELD_INVALID
+  value: 1
+  meaning: A request field held an invalid value.
+- reason: FIELD_MISSING
+  value: 2
+  meaning: A required request field was absent.
+execution_status:
+  source: grpc/sui/rpc/v2/execution_status.proto
+  note: >-
+    Transaction-level failures are enumerated in ExecutionStatus (e.g. insufficient
+    gas, Move abort with an abort code and location, arithmetic error, object
+    version/ownership violations, command index). These are execution outcomes
+    carried in TransactionEffects, not API errors.
+notes: >-
+  Derived from the published proto/OpenRPC. Sui does not use RFC 9457
+  application/problem+json; it uses gRPC status and JSON-RPC 2.0 error objects.

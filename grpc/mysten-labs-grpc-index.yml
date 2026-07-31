@@ -1,0 +1,30 @@
+generated: '2026-07-20'
+method: searched
+source: https://github.com/MystenLabs/sui-apis
+description: >-
+  Verbatim capture of the Sui gRPC API (Protobuf, proto3) interface definitions
+  from github.com/MystenLabs/sui-apis, package sui.rpc.v2. These are the public
+  interface definitions Mysten Labs recommends for high-throughput access to Sui
+  network data, replacing the deprecated JSON-RPC API.
+package: sui.rpc.v2
+buf: grpc/buf.yaml
+services:
+- name: LedgerService
+  file: grpc/sui/rpc/v2/ledger_service.proto
+  methods: [GetServiceInfo, GetObject, BatchGetObjects, GetTransaction, BatchGetTransactions, GetCheckpoint, GetEpoch, ListCheckpoints, ListTransactions]
+- name: StateService
+  file: grpc/sui/rpc/v2/state_service.proto
+  methods: [ListDynamicFields, ListOwnedObjects, GetCoinInfo, GetBalance, ListBalances]
+- name: TransactionExecutionService
+  file: grpc/sui/rpc/v2/transaction_execution_service.proto
+  methods: [ExecuteTransaction, SimulateTransaction]
+- name: MovePackageService
+  file: grpc/sui/rpc/v2/move_package_service.proto
+- name: SignatureVerificationService
+  file: grpc/sui/rpc/v2/signature_verification_service.proto
+- name: SubscriptionService
+  file: grpc/sui/rpc/v2/subscription_service.proto
+  methods: [SubscribeCheckpoints, SubscribeTransactions, SubscribeEvents]
+message_files: 27
+endpoint: fullnode.mainnet.sui.io:443
+notes: All .proto files under grpc/sui/rpc/v2/ are saved verbatim (Apache-2.0).

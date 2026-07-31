@@ -1,8 +1,28 @@
 aid: mysten-labs
 name: Mysten Labs
-description: Mysten Labs is a company surfaced as a portfolio company of a16z, lightspeed-venture-partners
-  and added to the API Evangelist network as a stub for enrichment. This profile is a lead awaiting the
-  enrichment pipeline.
+description: >-
+  Mysten Labs is the web3 infrastructure company that created Sui, a Layer 1
+  blockchain and smart-contract platform built on the Move programming language,
+  and Walrus, a decentralized blob-storage network coordinated on Sui. Mysten
+  Labs publishes the Sui developer platform: a JSON-RPC (OpenRPC) API, a GraphQL
+  RPC API, and a gRPC (Protobuf) API for reading chain state, querying objects
+  and events, and executing transactions, together with first-party TypeScript,
+  Rust, and Move SDKs, the `sui` command-line interface, dApp Kit, and
+  zkLogin/Enoki authentication tooling. The public full-node RPC endpoints are
+  open (no API key), and the platform is fully open source under Apache 2.0.
+accessModel:
+  pricing: unknown
+  onboarding: open
+  trial: false
+  try_now: false
+  public: true
+  label: Open access
+  confidence: medium
+  source:
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://avatars.githubusercontent.com/MystenLabs
 url: https://raw.githubusercontent.com/api-evangelist/mysten-labs/refs/heads/main/apis.yml
 x-type: company
 x-source: vc-portfolio
@@ -13,12 +33,140 @@ x-tier: stub
 x-tier-reason: portfolio-lead
 specificationVersion: '0.20'
 created: '2026-07-17'
-modified: '2026-07-17'
+modified: '2026-07-20'
+x-enrichment:
+  date: '2026-07-20'
+  status: enriched
+  artifacts_added: 21
+  pass: local-v1
 tags:
 - Company
-apis: []
+- Blockchain
+- Web3
+- Sui
+- Move
+- JSON-RPC
+- GraphQL
+- gRPC
+- SDK
+- Smart Contracts
+- Decentralized Storage
+- Cryptocurrency
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
 - FN: APIs.json
   email: info@apis.io
+apis:
+- name: Sui JSON-RPC API
+  description: >-
+    The Sui full-node JSON-RPC API (OpenRPC 1.2.6) for reading objects, coins,
+    balances, events, checkpoints, dynamic fields, and system state, and for
+    dry-running/executing transaction blocks. 56 methods across the sui_, suix_,
+    and unsafe_ namespaces. Deprecated in favor of gRPC / GraphQL RPC (migration
+    targeted July 2026).
+  humanURL: https://docs.sui.io/references/sui-api
+  baseURL: https://fullnode.mainnet.sui.io:443
+  tags:
+  - JSON-RPC
+  - OpenRPC
+  - Blockchain
+  properties:
+  - type: OpenRPC
+    url: openrpc/mysten-labs-sui-jsonrpc-openrpc.json
+  - type: Documentation
+    url: https://docs.sui.io/references/sui-api
+- name: Sui GraphQL RPC API
+  description: >-
+    The Sui GraphQL RPC API — a GraphQL interface over Sui network data
+    (objects, transactions, events, checkpoints, coins, name service) served
+    from indexed full-node data. Recommended replacement for JSON-RPC.
+  humanURL: https://docs.sui.io/references/sui-graphql
+  baseURL: https://graphql.mainnet.sui.io/graphql
+  tags:
+  - GraphQL
+  - Blockchain
+  properties:
+  - type: Documentation
+    url: https://docs.sui.io/references/sui-graphql
+- name: Sui gRPC API
+  description: >-
+    The Sui full-node gRPC API (Protobuf, sui.rpc.v2) exposing LedgerService,
+    StateService, TransactionExecutionService, MovePackageService,
+    SignatureVerificationService, and SubscriptionService for high-throughput,
+    typed access to chain data and transaction execution. Recommended
+    replacement for JSON-RPC.
+  humanURL: https://docs.sui.io/references/fullnode-protocol
+  baseURL: https://fullnode.mainnet.sui.io:443
+  tags:
+  - gRPC
+  - Protobuf
+  - Blockchain
+  properties:
+  - type: Protobuf
+    url: grpc/sui/rpc/v2/ledger_service.proto
+  - type: Documentation
+    url: https://docs.sui.io/references/fullnode-protocol
+common:
+- type: DeveloperPortal
+  url: https://docs.sui.io
+- type: Documentation
+  url: https://docs.sui.io
+- type: APIReference
+  url: https://docs.sui.io/references/sui-api
+- type: GettingStarted
+  url: https://docs.sui.io/guides/developer/getting-started
+- type: GitHubOrganization
+  url: https://github.com/MystenLabs
+- type: Blog
+  url: https://blog.sui.io
+- type: Website
+  url: https://mystenlabs.com
+- type: StatusPage
+  url: https://status.sui.io
+- type: LLMsTxt
+  url: llms/mysten-labs-llms.txt
+- type: WellKnown
+  url: well-known/mysten-labs-well-known.yml
+- type: APICatalog
+  url: well-known/mysten-labs-api-catalog.json
+- type: Packages
+  url: packages/mysten-labs-packages.yml
+- type: SDKs
+  url: packages/mysten-labs-packages.yml
+- type: MCPServer
+  url: mcp/mysten-labs-mcp.yml
+- type: AgentSkill
+  url: skills/_index.yml
+- type: Protobuf
+  url: grpc/sui/rpc/v2/ledger_service.proto
+- type: Conformance
+  url: conformance/mysten-labs-conformance.yml
+- type: Authentication
+  url: authentication/mysten-labs-authentication.yml
+- type: Lifecycle
+  url: lifecycle/mysten-labs-lifecycle.yml
+- type: Deprecation
+  url: lifecycle/mysten-labs-lifecycle.yml
+- type: ChangeLog
+  url: changelog/mysten-labs-changelog.yml
+- type: CLI
+  url: cli/mysten-labs-cli.yml
+- type: Conventions
+  url: conventions/mysten-labs-conventions.yml
+- type: ErrorCatalog
+  url: errors/mysten-labs-error-codes.yml
+- type: DataModel
+  url: data-model/mysten-labs-data-model.yml
+- type: Webhooks
+  url: asyncapi/mysten-labs-subscriptions.yml
+- type: DomainSecurity
+  url: security/mysten-labs-domain-security.yml
+- type: VulnerabilityDisclosure
+  url: security/mysten-labs-vulnerability-disclosure.yml
+- type: Security
+  url: https://github.com/MystenLabs/sui/blob/main/SECURITY.md
+- type: Sandbox
+  url: sandbox/mysten-labs-sandbox.yml
+- type: Components
+  url: components/mysten-labs-components.yml

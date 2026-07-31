@@ -1,0 +1,44 @@
+generated: '2026-07-20'
+method: searched
+source: https://docs.sui.io/references/cli
+name: sui
+description: >-
+  The `sui` command-line interface — the first-party CLI for interacting with the
+  Sui network, managing keys and environments, building/testing/publishing Move
+  packages, and running a local network. Distributed from the MystenLabs/sui repo.
+install:
+- method: homebrew
+  command: brew install sui
+- method: cargo
+  command: cargo install --locked --git https://github.com/MystenLabs/sui.git --branch mainnet sui
+- method: binary
+  command: Download prebuilt binaries from the MystenLabs/sui GitHub releases.
+- method: suiup
+  command: Install and manage sui versions via the suiup toolchain installer.
+command_groups:
+- name: sui client
+  description: Interact with the network — objects, gas, transactions, transfers, calls, publish.
+  docs: https://docs.sui.io/references/cli/client
+- name: sui keytool
+  description: Key management — generate, import, list, and sign with keypairs.
+  docs: https://docs.sui.io/references/cli/keytool
+- name: sui move
+  description: Build, test, and manage Move packages.
+  docs: https://docs.sui.io/references/cli/move
+- name: sui client ptb
+  description: Construct and execute Programmable Transaction Blocks from the CLI.
+  docs: https://docs.sui.io/references/cli/ptb
+- name: sui validator
+  description: Validator operations and staking management.
+  docs: https://docs.sui.io/references/cli/validator
+- name: sui console
+  description: Interactive REPL console against a network environment.
+- name: sui start / sui-test-validator
+  description: Run a local Sui network for development and testing.
+key_flows:
+- Create/switch environments (sui client new-env / switch) across mainnet, testnet, devnet, localnet.
+- Publish a Move package (sui client publish) and call entry functions (sui client call).
+- Build a PTB and execute it (sui client ptb).
+notes: >-
+  The CLI binary is catalogued as a distributable in packages context; this file
+  captures its command surface. Verified command groups from the Sui CLI reference.

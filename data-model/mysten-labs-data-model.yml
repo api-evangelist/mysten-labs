@@ -1,0 +1,99 @@
+generated: '2026-07-20'
+method: derived
+source: grpc/sui/rpc/v2/, openrpc/mysten-labs-sui-jsonrpc-openrpc.json
+description: >-
+  Entity-relationship graph of the Sui on-chain data model, derived from the
+  gRPC (sui.rpc.v2) proto messages and the JSON-RPC OpenRPC schemas.
+entities:
+- name: Object
+  id_field: object_id
+  description: The fundamental unit of Sui storage; typed Move value with an id, version, owner, and type.
+  fields: [object_id, version, digest, owner, object_type, contents]
+- name: Owner
+  description: Ownership of an Object — address-owned, object-owned, shared, or immutable.
+  kinds: [address, object, shared, immutable]
+- name: Address
+  id_field: address
+  description: A 32-byte account/entity identifier that can own objects and sign transactions.
+- name: Transaction
+  id_field: digest
+  description: A signed set of commands (Programmable Transaction Block) submitted for execution.
+  fields: [digest, kind, sender, gas_data, commands, expiration]
+- name: ExecutedTransaction
+  description: A transaction plus its effects, events, and containing checkpoint.
+  fields: [transaction, signatures, effects, events, checkpoint, timestamp]
+- name: TransactionEffects
+  description: The authoritative outcome of executing a transaction (created/mutated/deleted objects, gas, status).
+- name: Event
+  description: A Move-emitted event captured during transaction execution.
+  fields: [package_id, module, sender, event_type, contents]
+- name: Checkpoint
+  id_field: sequence_number
+  description: An ordered, certified batch of executed transactions.
+  fields: [sequence_number, digest, summary, contents, signature]
+- name: Epoch
+  id_field: epoch
+  description: A period of fixed validator committee and protocol config.
+- name: Coin
+  description: A Move Coin<T> object holding a balance of a coin type.
+- name: Balance
+  description: Aggregate spendable balance for a coin type owned by an address.
+  fields: [coin_type, balance, address_balance, coin_balance]
+- name: CoinMetadata
+  description: Metadata for a coin type (name, symbol, decimals, icon, treasury/supply).
+- name: DynamicField
+  description: A key/value field or child object attached dynamically to a parent Object's UID.
+  fields: [parent, field_id, name, value, value_type, child_id]
+- name: MovePackage
+  id_field: package_id
+  description: A published set of Move modules (bytecode) on-chain.
+- name: SystemState
+  description: The Sui system state (validators, staking, protocol config, storage fund).
+relationships:
+- from: Object
+  to: Owner
+  kind: has_one
+  via: owner
+- from: Object
+  to: DynamicField
+  kind: has_many
+  via: parent
+- from: DynamicField
+  to: Object
+  kind: has_one
+  via: child_id
+- from: ExecutedTransaction
+  to: TransactionEffects
+  kind: has_one
+  via: effects
+- from: ExecutedTransaction
+  to: Event
+  kind: has_many
+  via: events
+- from: ExecutedTransaction
+  to: Checkpoint
+  kind: belongs_to
+  via: checkpoint
+- from: Checkpoint
+  to: ExecutedTransaction
+  kind: has_many
+  via: contents
+- from: Address
+  to: Object
+  kind: has_many
+  via: owner
+- from: Address
+  to: Balance
+  kind: has_many
+  via: owner
+- from: Coin
+  to: CoinMetadata
+  kind: belongs_to
+  via: coin_type
+- from: Epoch
+  to: Checkpoint
+  kind: has_many
+  via: epoch
+notes: >-
+  Object ids, package ids, and addresses are 32-byte hex values prefixed 0x.
+  System framework types live under the 0x2 (sui) and 0x3 (sui_system) packages.

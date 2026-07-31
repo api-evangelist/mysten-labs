@@ -1,0 +1,50 @@
+generated: '2026-07-20'
+method: searched
+source: https://github.com/MystenLabs/skills
+description: >-
+  Official Mysten Labs Agent Skills for building on Sui, installable into Claude
+  Code, Cursor, Codex and 40+ AI coding agents via the `skills` CLI
+  (`npx skills add mystenlabs/skills`). Indexed here with source URLs; the
+  API-focused `accessing-data` skill is saved verbatim as
+  mysten-labs-accessing-data.md.
+install: npx skills add mystenlabs/skills --all
+skills:
+- file: mysten-labs-accessing-data.md
+  name: accessing-data
+  saved_verbatim: true
+  source: https://github.com/MystenLabs/skills/blob/main/accessing-data/SKILL.md
+  description: >-
+    How to read data from the Sui network — choosing among the three live APIs
+    (gRPC, GraphQL RPC, deprecated JSON-RPC), the Archival Store, indexers, and
+    Walrus off-chain blobs.
+- name: sui-sdks
+  source: https://github.com/MystenLabs/skills/blob/main/sui-sdks/SKILL.md
+  description: "@mysten/sui Transaction construction and SDK usage patterns."
+- name: frontend-apps
+  source: https://github.com/MystenLabs/skills/blob/main/frontend-apps/SKILL.md
+  description: Sui frontend / dApp development with @mysten/dapp-kit (React and core).
+- name: ptbs
+  source: https://github.com/MystenLabs/skills/blob/main/ptbs/SKILL.md
+  description: Programmable Transaction Block (PTB) semantics and composition.
+- name: sui-object-model
+  source: https://github.com/MystenLabs/skills/blob/main/object-model/SKILL.md
+  description: Sui object model — ownership, abilities, dynamic fields, collections, transfer patterns.
+- name: sui-cli
+  source: https://github.com/MystenLabs/skills/blob/main/sui-cli/SKILL.md
+  description: Using the sui command-line interface.
+- name: sui-client
+  source: https://github.com/MystenLabs/skills/blob/main/sui-client/SKILL.md
+  description: sui client subcommands for interacting with the network.
+- name: sui-move
+  source: https://github.com/MystenLabs/skills/blob/main/sui-move/SKILL.md
+  description: Writing Move smart contracts for Sui.
+- name: generate-sui-agent-config
+  source: https://github.com/MystenLabs/skills/blob/main/generate-sui-agent-config/SKILL.md
+  description: Generate a CLAUDE.md / AGENT.md config for Sui projects (recommends the sui.mcp.kapa.ai MCP server).
+- name: walrus-sites
+  source: https://github.com/MystenLabs/skills/blob/main/walrus-sites/SKILL.md
+  description: Building and publishing Walrus Sites (decentralized web hosting on Walrus).
+notes: >-
+  The MystenLabs/skills repo publishes 20+ SKILL.md skills. Only the API/data-access
+  skill is mirrored verbatim here; the rest are indexed by source URL to avoid
+  duplicating Move-language tutorial content. All are first-party.

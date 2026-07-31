@@ -1,0 +1,36 @@
+generated: '2026-07-20'
+method: searched
+source: https://docs.sui.io/references/sui-api
+versioning:
+  scheme: per-network-semver
+  description: >-
+    Sui releases are cut per network as semver-tagged binaries (devnet-vX.Y.Z,
+    testnet-vX.Y.Z, mainnet-vX.Y.Z). The JSON-RPC OpenRPC spec carries its own
+    info.version (currently 1.77.0). gRPC is versioned in the proto package path
+    (sui.rpc.v2).
+  current:
+    mainnet: v1.75.2
+    openrpc_spec: 1.77.0
+    grpc_package: sui.rpc.v2
+  networks: [mainnet, testnet, devnet]
+deprecation:
+  policy_url: https://docs.sui.io/develop/accessing-data/json-rpc-migration
+  description: >-
+    The Sui JSON-RPC API is deprecated. Mysten Labs directs developers to migrate
+    to either gRPC or GraphQL RPC by July 2026. This is a documented, dated
+    deprecation of an entire API surface, with a published migration guide.
+  deprecated_apis:
+  - name: Sui JSON-RPC API
+    replacement: [gRPC (sui.rpc.v2), GraphQL RPC]
+    sunset_target: '2026-07'
+    migration_guide: https://docs.sui.io/develop/accessing-data/json-rpc-migration
+status_page: https://status.sui.io
+deprecated_operations:
+  note: >-
+    The unsafe_* JSON-RPC method family (unsafe_moveCall, unsafe_transferSui,
+    unsafe_pay, unsafe_splitCoin, etc.) is superseded by client-side PTB
+    (Programmable Transaction Block) construction in the SDKs; the entire
+    JSON-RPC surface is deprecated in favor of gRPC/GraphQL.
+notes: >-
+  Deprecation captured from the Sui API reference and JSON-RPC migration guide.
+  Status page verified live at https://status.sui.io.

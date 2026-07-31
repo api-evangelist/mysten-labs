@@ -1,0 +1,74 @@
+generated: '2026-07-20'
+method: searched
+source: https://www.npmjs.com/org/mysten
+packages:
+- language: javascript
+  registry: npm
+  name: "@mysten/sui"
+  url: https://www.npmjs.com/package/@mysten/sui
+  install: npm install @mysten/sui
+  version: 2.22.0
+  description: Sui TypeScript SDK — client, transactions, cryptography, BCS, faucet.
+  official: true
+- language: javascript
+  registry: npm
+  name: "@mysten/dapp-kit"
+  url: https://www.npmjs.com/package/@mysten/dapp-kit
+  install: npm install @mysten/dapp-kit
+  version: 1.1.8
+  description: React hooks and components for building Sui dApps (wallet connect, queries).
+  official: true
+- language: javascript
+  registry: npm
+  name: "@mysten/bcs"
+  url: https://www.npmjs.com/package/@mysten/bcs
+  install: npm install @mysten/bcs
+  version: 2.1.0
+  description: BCS (Binary Canonical Serialization) implementation for JavaScript/TypeScript.
+  official: true
+- language: javascript
+  registry: npm
+  name: "@mysten/walrus"
+  url: https://www.npmjs.com/package/@mysten/walrus
+  install: npm install @mysten/walrus
+  version: 1.2.8
+  description: Walrus decentralized blob-storage SDK.
+  official: true
+- language: javascript
+  registry: npm
+  name: "@mysten/enoki"
+  url: https://www.npmjs.com/package/@mysten/enoki
+  install: npm install @mysten/enoki
+  version: 1.2.6
+  description: zkLogin authentication and sponsored transactions.
+  official: true
+- language: javascript
+  registry: npm
+  name: "@mysten/kiosk"
+  url: https://www.npmjs.com/package/@mysten/kiosk
+  install: npm install @mysten/kiosk
+  version: 1.3.8
+  description: Sui Kiosk (commerce / NFT trading) library.
+  official: true
+- language: javascript
+  registry: npm
+  name: "@mysten/deepbook-v3"
+  url: https://www.npmjs.com/package/@mysten/deepbook-v3
+  install: npm install @mysten/deepbook-v3
+  version: 1.5.8
+  description: DeepBook v3 central-limit-order-book DEX SDK.
+  official: true
+- language: rust
+  registry: crates.io
+  name: sui-sdk-types
+  url: https://crates.io/crates/sui-sdk-types
+  install: cargo add sui-sdk-types
+  version: 0.3.2
+  description: Core types for the Sui Rust SDK.
+  official: true
+  source_repo: https://github.com/MystenLabs/sui-rust-sdk
+notes: >-
+  All @mysten/* packages are published from the official Mysten Labs npm org.
+  The Rust SDK lives at github.com/MystenLabs/sui-rust-sdk (crates.io: sui-sdk-types,
+  sui-rpc-api, sui-transaction-builder). The `sui` CLI binary is distributed from
+  the MystenLabs/sui repo (see cli/mysten-labs-cli.yml).

@@ -1,0 +1,45 @@
+generated: '2026-07-20'
+method: derived
+source: grpc/sui/rpc/v2/subscription_service.proto, openrpc/mysten-labs-sui-jsonrpc-openrpc.json
+spec_type: EventSurface
+description: >-
+  Sui exposes a real-time server-push event surface (not callback webhooks):
+  clients open a long-lived subscription and the full node streams matching
+  checkpoints, transactions, and events as they are executed. Available over gRPC
+  server-streaming (SubscriptionService) and JSON-RPC WebSocket subscriptions.
+transports:
+- protocol: grpc-server-streaming
+  service: sui.rpc.v2.SubscriptionService
+  source: grpc/sui/rpc/v2/subscription_service.proto
+  channels:
+  - name: SubscribeCheckpoints
+    filter: TransactionFilter
+    message: SubscribeCheckpointsResponse (cursor + Checkpoint)
+  - name: SubscribeTransactions
+    filter: TransactionFilter
+    message: SubscribeTransactionsResponse (ExecutedTransaction + Watermark)
+  - name: SubscribeEvents
+    filter: EventFilter
+    message: SubscribeEventsResponse (Event + Watermark)
+- protocol: json-rpc-websocket
+  source: openrpc/mysten-labs-sui-jsonrpc-openrpc.json
+  channels:
+  - name: suix_subscribeEvent
+    description: Subscribe to a stream of Move events matching an event filter.
+    status: deprecated
+  - name: suix_subscribeTransaction
+    description: Subscribe to a stream of executed transactions matching a filter.
+    status: deprecated
+semantics:
+  resumption: >-
+    Subscriptions do not support resumption; a new subscription begins at the
+    current chain tip. Gaps are replayed via the paired List API using the last
+    received Watermark.cursor.
+  delivery: >-
+    Filtered streams emit a progress-only first frame and continue to advance a
+    watermark cursor even when no item matches, guaranteeing bounded staleness.
+notes: >-
+  This is a genuine push/streaming event surface but not HTTP webhooks (no
+  consumer-registered callback URLs). Captured to represent the async/event
+  capability; the JSON-RPC subscription methods are deprecated in favor of the
+  gRPC SubscriptionService.
