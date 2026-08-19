@@ -4,10 +4,9 @@ status: published
 source: https://github.com/MystenLabs/skills/blob/main/generate-sui-agent-config/SKILL.md
 server:
   name: sui-docs
-  description: >-
-    The official Sui documentation MCP server (kapa.ai-powered) for up-to-date
-    answers grounded in Sui docs. Referenced by the Mysten Labs agent-skills repo
-    as the recommended MCP server to query for Sui development questions.
+  description: The official Sui documentation MCP server (kapa.ai-powered) for up-to-date answers grounded
+    in Sui docs. Referenced by the Mysten Labs agent-skills repo as the recommended MCP server to query
+    for Sui development questions.
   transport: http
   url: https://sui.mcp.kapa.ai
 tools: []
@@ -18,7 +17,13 @@ related:
     repo: https://github.com/0xdwong/sui-mcp
     official: false
     note: Community MCP toolkit for interacting with the Sui blockchain (not first-party).
-notes: >-
-  Mysten Labs publishes an official documentation MCP server at sui.mcp.kapa.ai,
-  surfaced through its official agent-skills repository. A separate community MCP
-  server (sui-mcp) wraps on-chain interactions but is not maintained by Mysten Labs.
+notes: Mysten Labs publishes an official documentation MCP server at sui.mcp.kapa.ai, surfaced through
+  its official agent-skills repository. A separate community MCP server (sui-mcp) wraps on-chain interactions
+  but is not maintained by Mysten Labs.
+deployment:
+  mode: remote
+  endpoint: https://sui.mcp.kapa.ai
+  verified: probed
+  probe: gated
+  checked: '2026-08-12'
+  source: catalog MCP census
