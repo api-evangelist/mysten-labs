@@ -10,6 +10,17 @@ description: >-
   Rust, and Move SDKs, the `sui` command-line interface, dApp Kit, and
   zkLogin/Enoki authentication tooling. The public full-node RPC endpoints are
   open (no API key), and the platform is fully open source under Apache 2.0.
+deliveryModel:
+  model: library
+  open_source: false
+  commercial: false
+  callable_host: false
+  label: Library · distributed through package registries, no callable service
+  confidence: low
+  source:
+  - none
+  generated: '2026-08-28'
+  method: derived
 accessModel:
   pricing: unknown
   onboarding: open
