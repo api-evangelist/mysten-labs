@@ -44,7 +44,7 @@ x-tier: stub
 x-tier-reason: portfolio-lead
 specificationVersion: '0.23'
 created: '2026-07-17'
-modified: '2026-07-20'
+modified: '2026-10-06'
 x-enrichment:
   date: '2026-07-20'
   status: enriched
@@ -119,6 +119,8 @@ apis:
   - type: Documentation
     url: https://docs.sui.io/references/fullnode-protocol
 common:
+- url: https://www.mystenlabs.com/blog
+  type: Blog
 - type: DeveloperPortal
   url: https://docs.sui.io
 - type: Documentation
