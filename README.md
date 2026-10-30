@@ -64,6 +64,108 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-Mysten Labs is a company surfaced as a portfolio company of a16z, lightspeed-venture-partners and added to the API Evangelist network as a stub for enrichment. This profile is a lead awaiting the enrichment pipeline.
+Mysten Labs is the web3 infrastructure company that created Sui, a Layer 1 blockchain and smart-contract platform built on the Move programming language, and Walrus, a decentralized blob-storage network coordinated on Sui. Mysten Labs publishes the Sui developer platform: a JSON-RPC (OpenRPC) API, a GraphQL RPC API, and a gRPC (Protobuf) API for reading chain state, querying objects and events, and executing transactions, together with first-party TypeScript, Rust, and Move SDKs, the `sui` command-line interface, dApp Kit, and zkLogin/Enoki authentication tooling. The public full-node RPC endpoints are open (no API key), and the platform is fully open source under Apache 2.0.
 
-Backed by: a16z, lightspeed-venture-partners
+**Areas:** Company · Blockchain · Web3 · Sui · Move · JSON-RPC · GraphQL · gRPC · SDK · Smart Contracts · Decentralized Storage · Cryptocurrency
+
+## Mysten Labs on APIs.io
+
+Everything profiled for Mysten Labs is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/mysten-labs/](https://apis.io/providers/mysten-labs/)** — or go straight to one of the APIs or properties below.
+
+### APIs (3)
+
+- [Sui JSON-RPC API](https://apis.io/apis/mysten-labs/sui-json-rpc-api/) — The Sui full-node JSON-RPC API (OpenRPC 1.2.6) for reading objects, coins, balances, events, checkpoints, dynamic fields, and system state, and for…
+- [Sui GraphQL RPC API](https://apis.io/apis/mysten-labs/sui-graphql-rpc-api/) — The Sui GraphQL RPC API — a GraphQL interface over Sui network data (objects, transactions, events, checkpoints, coins, name service) served from indexed…
+- [Sui gRPC API](https://apis.io/apis/mysten-labs/sui-grpc-api/) — The Sui full-node gRPC API (Protobuf, sui.rpc.v2) exposing LedgerService, StateService, TransactionExecutionService, MovePackageService,…
+
+### Published properties
+
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
+
+#### AsyncAPI (1)
+
+Event-driven and webhook contracts.
+
+- [Mysten Labs Subscriptions](https://apis.io/asyncapis/mysten-labs/mysten-labs-subscriptions/)
+
+#### MCP servers (1)
+
+Model Context Protocol servers that expose the API to agents.
+
+- [sui-docs](https://apis.io/servers/mysten-labs/sui-docs/)
+
+#### Security (3)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Mysten Labs Authentication](https://apis.io/security/mysten-labs/mysten-labs-authentication/)
+- [Mysten Labs Domain Security](https://apis.io/security/mysten-labs/mysten-labs-domain-security/)
+- [Mysten Labs Vulnerability Disclosure](https://apis.io/security/mysten-labs/mysten-labs-vulnerability-disclosure/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
+- [Website](https://mystenlabs.com)
+- [Documentation](https://docs.sui.io)
+- [Getting started](https://docs.sui.io/guides/developer/getting-started)
+- [API reference](https://docs.sui.io/references/sui-api)
+- [Blog](https://www.mystenlabs.com/blog)
+- [Security](https://github.com/MystenLabs/sui/blob/main/SECURITY.md)
+- [GitHub](https://github.com/MystenLabs)
+- [Status](https://status.sui.io)
+
+## API Evangelist rating
+
+**Kin Score 43.0** — developing · rubric 0.25.0 · scored 2026-10-23
+
+| Facet | Score |
+|---|---|
+| Discoverability | 80.0 |
+| Contract quality | 39.0 |
+| Contract governance | 4.5 |
+| Operational transparency | 60.5 |
+| Developer ergonomics | 78.6 |
+| Access clarity | 0.0 |
+
+**Agent readiness 48.6** — agent-ready (gated down from agent-native)
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | — |
+| Reversibility Documented | — |
+| MCP Server | verified |
+| Auth Clarity | served (partial credit) |
+| Idempotency | — |
+| Error Semantics | derived (partial credit) |
+| OpenAPI Examples | — |
+| Rate Limit Signal | — |
+| Event Surface Described | derived (partial credit) |
+| Agent Skills | yes |
+| Well Known Catalog | yes |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | served (partial credit) |
+| Protected Resource Metadata | verified |
+| Dynamic Client Registration | yes |
+| Agentic Commerce | — |
+| Pagination Ratio | na |
+| Operation Distinctiveness | na |
+
+**Regulatory alignment 22.5** — Horizontal (data, software, accessibility, platform)
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/mysten-labs/](https://apis.io/providers/mysten-labs/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Mysten Labs: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/mysten-labs/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
